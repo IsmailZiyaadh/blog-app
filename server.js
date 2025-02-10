@@ -2,6 +2,8 @@ import cors from "cors";
 import express from "express";
 import bodyParser from "body-parser";
 import path from "path";
+import moment from "moment";
+import fs from "fs";
 
 
 const app = express();
@@ -15,11 +17,32 @@ app.use(express.static("public"));
 app.use(express.json());
 
 
-let blogs = []; 
+const BLOGS_FILE = "blogs.json"; 
+
+const loadBlogs = () =>{
+  try{
+    const data = fs.readFileSync(BLOGS_FILE, "utf8");
+    return JSON.parse(data);
+  }catch(err){
+    return [];
+  }
+}
+
+const saveBlogs = (blogs) =>{
+  fs.writeFileSync(BLOGS_FILE, JSON.stringify(blogs, null, 2), "utf8");
+}
+
+let blogs = loadBlogs();
 
 app.get("/", (req, res) => {
-    res.render("index.ejs", { blogs }); 
+  const formattedBlogs = blogs.map(blog => ({
+      ...blog,
+      timeAgo: moment(blog.createdAt).fromNow() // Converts date to "10m ago", "1h ago", etc.
+  }));
+  
+  res.render("index.ejs", { blogs: formattedBlogs }); 
 });
+
 
 app.get("/write", (req, res) => {
     res.render("write", { blogs: null });
@@ -27,7 +50,7 @@ app.get("/write", (req, res) => {
 
 
 app.post("/add-blog", (req, res) => {
-  const { id, title, email, password, content } = req.body;
+  const { id, title, email, name,  password, content } = req.body;
 
   if (title && content) {
       if (id) {
@@ -39,8 +62,18 @@ app.post("/add-blog", (req, res) => {
               return res.send("Authentication failed or blog not found!");
           }
       } else {
-          blogs.push({ id: Date.now(), title, email, password, content, createdAt: new Date().toISOString()  });
+        const newBlog = {
+          id: Date.now(), 
+          title, 
+          email, 
+          name, 
+          password, 
+          content, 
+          createdAt: new Date().toISOString() 
+        };
+        blogs.push(newBlog);
       }
+      saveBlogs(blogs);
   }
   res.redirect("/");
 });
@@ -71,6 +104,7 @@ app.post("/delete-blog", (req, res) => {
   if (blogIndex === -1) return res.send("Authentication failed!");
   
   blogs.splice(blogIndex, 1);
+  saveBlogs(blogs);
   res.redirect("/");
 });
 

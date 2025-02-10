@@ -15,7 +15,7 @@ body {
     justify-content: space-around; 
     align-items: center;
     background-color: hsla(234, 40%, 72%, 0.923);
-    padding: 5px 10px;
+    padding: 5px 5px 5px 2px;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -43,11 +43,12 @@ body {
 hr {
     height: 1px;
     background-color: #444;
-    border: none;
+    /* border: none; */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     width: 230px;
-    margin-top: 0;
+    margin-top: 6px;
 }
+
 #searchBar {
     width: 300px;
     padding: 10px 15px;
@@ -124,6 +125,12 @@ footer{
     text-align: left;
     padding: 10px;
     margin-top: 0;
+}
+.card > span{
+    text-align: left;
+    padding: 3px 10px;
+    margin: 0;
+
 }
 
 .card:hover {
@@ -202,17 +209,18 @@ button {
     margin-bottom: 10px;
 }
 
-.blog-container p {
+.blog-container p , .blog-container > span{
     font-size: 18px;
     color: #555;
     line-height: 1.5;
     margin-bottom: 20px;
     text-align: justify;
 }
+
 .card > div{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 .read-more {
     display: inline-block;
@@ -221,6 +229,7 @@ button {
     font-weight: bold;
     color: purple;
     margin-left: 9px;
+    font-size: 12px;
 }
 
 .read:hover {
@@ -359,6 +368,9 @@ img{
     .nav-hide {
       display: none; 
     }
+    hr{
+        width: 210px;
+    }
   
     .hamburger {
       display: flex; 
@@ -366,5 +378,11 @@ img{
   
     #searchBar{
       width: 95%;
+    }
+  }
+  
+  @media (max-width: 323px) {
+    .read-more {
+        font-size: 10px;
     }
   }

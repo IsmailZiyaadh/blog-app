@@ -44,7 +44,7 @@
           blogCards.forEach((card) => {
             let title = card.getAttribute("data-title")?.toLowerCase();
             if (title && title.includes(query)) {
-              card.style.display = "block";
+              card.style.display = "flex";
             } else {
               card.style.display = "none";
             }

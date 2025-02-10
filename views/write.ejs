@@ -22,6 +22,13 @@
             required
           />
           <input
+          type="text"
+          name="name"
+          value="<%= typeof blog !== 'undefined' && blog ? blog.name : '' %>"
+          placeholder="Author name *"
+          required
+        />
+          <input
             type="email"
             name="email"
             value="<%= typeof blog !== 'undefined' && blog ? blog.email : '' %>"

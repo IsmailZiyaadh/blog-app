@@ -5,10 +5,13 @@
   <div class="card" data-title="<%= blog.title %>">
     <h3><%= blog.title %></h3>
     <hr />
-    <p><%= blog.content.substring(0, 160) %>...</p>
+    <span>Author: <%= blog.name %></span>
+    <span>Date: <%= new Date(blog.createdAt).toLocaleDateString() %></span>
+    <p><%= blog.content.substring(0, 100) %>...</p>
     <div>
       <a href="/read/<%= blog.id %>" class="read-more read">Read More</a>
-      <p class="read-more"><%= new Date(blog.createdAt).toLocaleDateString() %></p>
+      <p class="read-more">Posted: <%= blog.timeAgo %></p>
+      </p>
     </div>
   </div>
   <% }) %>

@@ -10,6 +10,8 @@
   <body>
     <div class="blog-container">
       <h1><%= blog.title %></h1>
+      <span>Author: <%= blog.name %></span><br>
+      <span>Date: <%= new Date(blog.createdAt).toLocaleDateString() %></span>
       <p><%- blog.content.replace(/\n/g, "<br />") %></p>
 
       <div class="form-container">
