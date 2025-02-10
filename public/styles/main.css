@@ -362,7 +362,14 @@ img{
   #side-write{
     margin-top: 30px;
   }
-  
+  .side-img{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    height: 300px;
+  }
 
   @media (max-width: 680px) {
     .nav-hide {
