@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/images/lil bean.png" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <title>blog-app</title>
+  </head>
+  <body>
+    <div class="nav-container">
+      <div class="nav-icon">
+        <a href="/"><img src="/images/coffe.png" height="59px" alt="" /></a>
+      </div>
+      <div class="nav-contents">
+        <input type="search" id="searchBar" placeholder="Search blogs by title..." />
+        <div class="nav-hide">
+            <a href="/">Home</a>
+            <a href="/write">Write</a>
+        </div>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+    <div class="side-nav" id="sideNav">
+      <div>
+        <a href="/">Home</a>
+        <div id="side-write">
+            <a href="/write">Write</a>
+        </div>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("searchBar")
+        .addEventListener("input", (event) => {
+          console.log("input search bar detected");
+          let query = event.target.value.toLowerCase();
+          let blogCards = document.querySelectorAll(".card");
+
+          blogCards.forEach((card) => {
+            let title = card.getAttribute("data-title")?.toLowerCase();
+            if (title && title.includes(query)) {
+              card.style.display = "block";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+
+      const hamburger = document.getElementById("hamburger");
+      const sideNav = document.getElementById("sideNav");
+
+      hamburger.addEventListener("click", () => {
+        const currentRight = sideNav.style.right;
+        if (currentRight === "0px") {
+          sideNav.style.right = "-100px"; // Slide out
+        } else {
+          sideNav.style.right = "0px"; // Slide in
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+<%- include("partials/header.ejs") %>
+<body>
+<div class="card-container">
+  <% blogs.forEach(blog => { %>
+  <div class="card" data-title="<%= blog.title %>">
+    <h3><%= blog.title %></h3>
+    <hr />
+    <p><%= blog.content.substring(0, 160) %>...</p>
+    <div>
+      <a href="/read/<%= blog.id %>" class="read-more read">Read More</a>
+      <p class="read-more"><%= new Date(blog.createdAt).toLocaleDateString() %></p>
+    </div>
+  </div>
+  <% }) %>
+</div>
+</body>
+<%- include("partials/footer.ejs") %>
