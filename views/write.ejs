@@ -12,7 +12,7 @@
           <input
             type="hidden"
             name="id"
-            value="<%= typeof blog !== 'undefined' && blog ? blog.id : '' %>"
+            value="<%= typeof blog !== 'undefined' && blog ? blog._id : '' %>"
           />
           <input
             type="text"
@@ -43,10 +43,7 @@
           />
           <textarea
             name="content"
-            placeholder="
-            Author: author name
-            your content...
-            "
+            placeholder="your content..."
             required
           >
 <%= typeof blog !== 'undefined' && blog ? blog.content : '' %></textarea

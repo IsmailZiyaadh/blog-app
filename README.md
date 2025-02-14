@@ -9,12 +9,13 @@ View all blog posts with the latest ones appearing at the top
 Search for blog posts by title using a search bar with live suggestions
 User authentication (email and password stored in a file for now)
 Responsive design
+Now using MongoDB Atlas for blog storage
 
 Tech Stack
 
-Frontend: HTML, CSS, EJS
+Frontend: CSS, EJS
 Backend: Node.js, Express
-storage: File-based storage for user authentication (no database yet)
+Database: MongoDB Atlas for storing blog posts (user authentication still file-based)
 
 Folder Structure
 
@@ -31,8 +32,6 @@ Folder Structure
   │   ├── partials/
   │   │   ├── header.ejs
   │   │   ├── footer.ejs
-  ├── blog/
-  │   ├── search.js
   ├── server.js
   ├── README.md
 
@@ -45,6 +44,9 @@ cd blog-app
 Install dependencies:
 npm install
 
+Set up your MongoDB Atlas connection in .env:
+MONGODB_URI=your-mongodb-atlas-connection-string
+
 Run the server:
 node server.js
 
@@ -52,11 +54,10 @@ Open in browser:
 Visit http://localhost:3000
 
 Search Functionality
-The search bar allows users to find blogs by title.
+The search bar allows users to find blogs by title and by author name as well.
 Blogs are filtered dynamically when typing in the search bar.
 
 Future Enhancements
-Add a database (MongoDB/PostgreSQL) for storing blogs and users
 Implement user authentication with hashed passwords
 Improve UI with better styling and animations
 

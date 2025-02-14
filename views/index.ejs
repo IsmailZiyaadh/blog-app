@@ -2,16 +2,16 @@
 <body>
 <div class="card-container">
   <% blogs.forEach(blog => { %>
-  <div class="card" data-title="<%= blog.title %>">
+  <div class="card" data-title="<%= blog.name %><%= blog.title %>">
     <h3><%= blog.title %></h3>
     <hr />
     <span>Author: <%= blog.name %></span>
     <span>Date: <%= new Date(blog.createdAt).toLocaleDateString() %></span>
     <p><%= blog.content.substring(0, 100) %>
-    <a href="/read/<%= blog.id %>" style="text-decoration: none;">...</a> 
+    <a href="/read/<%= blog._id %>" style="text-decoration: none;">....</a> 
     </p>
     <div>
-      <a href="/read/<%= blog.id %>" class="read-more read">Read More</a>
+      <a href="/read/<%= blog._id %>" class="read-more read">Read More</a>
       <p class="read-more">Posted: <%= blog.timeAgo %></p>
       </p>
     </div>
