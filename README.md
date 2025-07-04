@@ -38,7 +38,7 @@ Folder Structure
 Installation & Setup
 
 Clone the repository:
-git clone https://github.com/your-username/blog-app.git
+git clone https://github.com/IsmailZiyaadh/blog-app.git
 cd blog-app
 
 Install dependencies:
